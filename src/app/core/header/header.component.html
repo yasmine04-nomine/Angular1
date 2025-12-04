@@ -1,1 +1,27 @@
-<p>header works!</p>
+<nav class="navbar">
+  <div class="nav-container">
+    <a routerLink="/home" class="nav-brand">📱 Mon Application</a>
+    
+    <ul class="nav-menu">
+      <li>
+        <a routerLink="/home" 
+           routerLinkActive="active" 
+           [routerLinkActiveOptions]="{exact: true}">
+          🏠 Home
+        </a>
+      </li>
+      <li>
+        <a routerLink="/suggestions" 
+           routerLinkActive="active">
+          📝 Suggestions (Lazy)
+        </a>
+      </li>
+      <li>
+        <a routerLink="/users" 
+           routerLinkActive="active">
+          👥 Users (Lazy)
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

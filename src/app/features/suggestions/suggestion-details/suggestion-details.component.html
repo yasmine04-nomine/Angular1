@@ -1,0 +1,74 @@
+<div class="details-container" *ngIf="suggestion">
+  
+  <!-- En-tête avec numéro -->
+  <div class="details-header">
+    <h3>Détails de la Suggestion #{{ suggestionId }}</h3>
+    <span class="status-badge" [ngClass]="{
+      'badge-accepted': suggestion.status === 'Acceptée',
+      'badge-rejected': suggestion.status === 'Refusée',
+      'badge-pending': suggestion.status === 'En attente'
+    }">
+      {{ suggestion.status }}
+    </span>
+  </div>
+  
+  <!-- Carte de détails -->
+  <div class="details-card">
+    
+    <div class="detail-section">
+      <h4>📌 Titre</h4>
+      <p>{{ suggestion.title }}</p>
+    </div>
+    
+    <div class="detail-section">
+      <h4>📝 Description Complète</h4>
+      <p>{{ suggestion.description }}</p>
+    </div>
+    
+    <div class="detail-row">
+      <div class="detail-item">
+        <h4>🏷️ Catégorie</h4>
+        <span class="category-badge">{{ suggestion.category }}</span>
+      </div>
+      
+      <div class="detail-item">
+        <h4>👤 Auteur</h4>
+        <p>{{ suggestion.author }}</p>
+      </div>
+    </div>
+    
+    <div class="detail-row">
+      <div class="detail-item">
+        <h4>📅 Date de Soumission</h4>
+        <p>{{ suggestion.date | date:'fullDate':'':'fr' }}</p>
+      </div>
+      
+      <div class="detail-item">
+        <h4>🔢 ID</h4>
+        <p>#{{ suggestion.id }}</p>
+      </div>
+    </div>
+    
+  </div>
+  
+  <!-- Boutons d'action -->
+  <div class="actions">
+    <!-- Méthode 1 : Avec fonction TypeScript -->
+    <button (click)="goBackToList()" class="btn btn-back">
+      ← Retour à la liste
+    </button>
+    
+    <!-- Méthode 2 : Avec routerLink -->
+    <a routerLink="/suggestions" class="btn btn-back-alt">
+      ← Retour (avec routerLink)
+    </a>
+  </div>
+  
+</div>
+
+<!-- Message si suggestion non trouvée -->
+<div *ngIf="!suggestion" class="error-message">
+  <h3>⚠️ Suggestion non trouvée</h3>
+  <p>La suggestion avec l'ID {{ suggestionId }} n'existe pas.</p>
+  <a routerLink="/suggestions" class="btn btn-back">← Retour à la liste</a>
+</div>

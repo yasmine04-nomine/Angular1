@@ -1,0 +1,12 @@
+.suggestions-module {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.suggestions-module h2 {
+  color: #2c3e50;
+  margin-bottom: 2rem;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 0.5rem;
+}

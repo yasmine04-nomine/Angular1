@@ -1,62 +1,10 @@
-<p>list-suggestions works!</p>
 <div class="suggestions-container">
-  <h1>Suggestions List</h1>
-
-  <!-- Barre de recherche avec two-way binding -->
-  <div class="search-bar">
-    <input
-      type="text"
-      placeholder="Search for a suggestion"
-      class="search-input">
-  </div>
-
-  <!-- Liste des suggestions en cards horizontales -->
-  <div class="suggestions-list">
-    <div class="suggestion-card">
-        <div *ngFor="let suggestion of suggestions" class="suggestion-card">
-
-
-      <!-- Titre de la suggestion -->
-      <h3 class="suggestion-title">{{ suggestion.title }}</h3>
-
-      <!-- Catégorie et Date -->
-      <div class="suggestion-meta">
-        <span class="suggestion-category">{{ suggestion.category }}</span>
-        <span class="suggestion-date">{{ suggestion.date | date:'dd/MM/yyyy' }}</span>
-      </div>
-
-      <!-- Description -->
-      <p class="suggestion-description">{{ suggestion.description }}</p>
-
-      <!-- Statut -->
-      <div class="suggestion-status">
-        <span class="status-badge"
-              [ngClass]="{
-                'status-en-attente': suggestion.status === 'en_attente',
-                'status-acceptee': suggestion.status === 'acceptee',
-                'status-refusee': suggestion.status === 'refusee'
-              }">
-          {{ getStatusLabel(suggestion.status) }}
-        </span>
-      </div>
-
-      <!-- Boutons d'action -->
-      <div *ngIf= "suggestion.status !== 'refusee' " class="action-buttons">
-        <button class="like-button" (click)="incrementLikes(suggestion)">
-          <span>👍</span> Like ({{ suggestion.likes }})
- </button>
-
-        <button
-          class="favorite-button">
-        <span>⭐</span>
-        </button>
-
-
-    </div>
-  </div>
-
-  <!-- Message si aucune suggestion trouvée -->
-  <div *ngIf="suggestions.length === 0" class="no-results">
-    <p>Aucune suggestion trouvée.</p>
+  <h2>📝 Liste des Suggestions</h2>
+  
+  <div class="suggestion-card" *ngFor="let suggestion of suggestions">
+    <h3>{{ suggestion.title }}</h3>
+    <p>{{ suggestion.description }}</p>
+    <span class="category">{{ suggestion.category }}</span>
+    <span class="date">{{ suggestion.date | date:'dd/MM/yyyy' }}</span>
   </div>
 </div>
